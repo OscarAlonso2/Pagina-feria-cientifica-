@@ -58,11 +58,6 @@ function leerDatosCurso(curso) {
          articulosCarrito = [...articulosCarrito, infoCurso];
     }
 
-    // console.log(articulosCarrito)
-
-    
-
-    // console.log(articulosCarrito)
     carritoHTML();
 }
 
@@ -70,8 +65,7 @@ function leerDatosCurso(curso) {
 function eliminarCurso(e) {
     e.preventDefault();
     if(e.target.classList.contains('borrar-curso') ) {
-         // e.target.parentElement.parentElement.remove();
-         const cursoId = e.target.getAttribute('data-id')
+         const cursoId = e.target.getAttribute('data-id');
          
          // Eliminar del arreglo del carrito
          articulosCarrito = articulosCarrito.filter(curso => curso.id !== cursoId);
@@ -106,12 +100,18 @@ function carritoHTML() {
 
 // Elimina los cursos del carrito en el DOM
 function vaciarCarrito() {
-    // forma lenta
-    // contenedorCarrito.innerHTML = '';
-
-
-    // forma rapida (recomendada)
     while(contenedorCarrito.firstChild) {
          contenedorCarrito.removeChild(contenedorCarrito.firstChild);
-     }
+    }
 }
+
+// Función para cargar el chatbot de Tidio
+function cargarChatTidio() {
+    const script = document.createElement('script');
+    script.src = "//code.tidio.co/olylavdhdwhrjd0lmgrrlrm9ksem0wy6.js";
+    script.async = true;
+    document.body.appendChild(script);
+}
+
+// Llamar a la función para cargar el chatbot de Tidio
+cargarChatTidio();
